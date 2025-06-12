@@ -124,6 +124,12 @@
       <DependentUpon>CasharyReport.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConfig.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginFormCashary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,7 @@
     <None Include="Resources\Animasi Hijau Tips Mengatur Keuangan Youtube Intro.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Resources\bgLoginRegis.png" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +202,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logout%28129 x 40 piksel%29 %2840 x 40 piksel%29.png" />
+=======
+    <None Include="Resources\fiks.png" />
+>>>>>>> d23f04accb8c63c46bbd01029fc02248338ff81f
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

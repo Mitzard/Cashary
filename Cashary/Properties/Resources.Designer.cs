@@ -73,9 +73,15 @@ namespace Cashary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap bgLoginRegis {
             get {
                 object obj = ResourceManager.GetObject("bgLoginRegis", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap coba {
+            get {
+                object obj = ResourceManager.GetObject("coba", resourceCulture);
+>>>>>>> d23f04accb8c63c46bbd01029fc02248338ff81f
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,6 +89,7 @@ namespace Cashary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap cashary_form__1_ {
             get {
                 object obj = ResourceManager.GetObject("cashary form (1)", resourceCulture);
@@ -116,6 +123,11 @@ namespace Cashary.Properties {
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap fiks {
+            get {
+                object obj = ResourceManager.GetObject("fiks", resourceCulture);
+>>>>>>> d23f04accb8c63c46bbd01029fc02248338ff81f
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

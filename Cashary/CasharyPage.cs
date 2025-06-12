@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,13 +21,102 @@ namespace Cashary
         int totalPages = 1;
         int totalRecords = 0;
 
+
+
         bool isFiltered = false;
 
         public CasharyPage()
         {
             InitializeComponent();
             LoadData();
+            LoadKategori();
+            CasharyPageLoad();
         }
+
+        private void LoadKategori()
+        {
+            using (MySqlConnection conn = new MySqlConnection(DBConfig.ConnStr))
+                try
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("SELECT id, nama_kategori FROM kategori", conn);
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    cmbFilterBy.DataSource = dt;
+                    cmbFilterBy.DisplayMember = "nama_kategori";
+                    cmbFilterBy.ValueMember = "id";
+                    cmbFilterBy.SelectedIndex = -1;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal memuat kategori: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+        }
+
+        private void CasharyPageLoad()
+        {
+            // Set DateTimePicker agar tampak kosong saat pertama kali
+            dtpPage.Format = DateTimePickerFormat.Custom;
+            dtpPage.CustomFormat = " ";  // kosongkan tampilannya
+            dtpPage.ValueChanged += dtpPage_ValueChanged;
+        }   
+
+        private void Filtered()
+        {
+            string waktu = dtpPage.Value.ToString("yyyy-MM-dd"); // ambil hanya tanggal
+            string kategoriId = cmbFilterBy.SelectedValue?.ToString();
+            string deskripsi = txtSearch.Text.Trim();
+
+            string query = @"
+            SELECT transaksi.id, waktu, kategori.nama_kategori AS kategori, jumlah, deskripsi
+            FROM transaksi
+            JOIN kategori ON transaksi.kategori_id = kategori.id
+            WHERE 1=1";
+
+            // parameter builder
+            MySqlCommand cmd = new MySqlCommand();
+            if (!string.IsNullOrEmpty(waktu))
+            {
+                query += " AND DATE(waktu) = @waktu";
+                cmd.Parameters.AddWithValue("@waktu", waktu);
+            }
+
+            if (!string.IsNullOrEmpty(kategoriId))
+            {
+                query += " AND kategori_id = @kategori_id";
+                cmd.Parameters.AddWithValue("@kategori_id", kategoriId);
+            }
+
+            if (!string.IsNullOrEmpty(deskripsi))
+            {
+                query += " AND LOWER(IFNULL(deskripsi, '')) LIKE @deskripsi";
+                cmd.Parameters.AddWithValue("@deskripsi", "%" + deskripsi.ToLower() + "%");
+            }
+
+            cmd.CommandText = query;
+
+            using (MySqlConnection conn = new MySqlConnection(DBConfig.ConnStr))
+                try
+                {
+                    cmd.Connection = conn;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgvCashary.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Filter gagal: " + ex.Message);
+                }
+        }
+
+
 
         private void btnTambahData_Click(object sender, EventArgs e)
         {
@@ -53,7 +143,9 @@ namespace Cashary
                 {
                     conn.Open();
 
+
                     // Hitung total records
+
                     string countQuery = "SELECT COUNT(*) FROM transaksi WHERE user_id = @userId";
                     MySqlCommand countCmd = new MySqlCommand(countQuery, conn);
                     countCmd.Parameters.AddWithValue("@userId", currentUserId);
@@ -214,5 +306,40 @@ namespace Cashary
         {
 
         }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadData();
+            }
+        }
+
+        private void CasharyPage_Load(object sender, EventArgs e)
+        {
+            btnSearch.BackColor = System.Drawing.ColorTranslator.FromHtml("#4CAF50");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Filtered();
+        }
+
+        private void dtpPage_ValueChanged(object sender, EventArgs e)
+        {
+            dtpPage.Format = DateTimePickerFormat.Long;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtSearch.Clear();                
+            cmbFilterBy.SelectedIndex = -1;   
+            dtpPage.CustomFormat = " ";       
+            dtpPage.Format = DateTimePickerFormat.Custom;
+
+            LoadData();
+        }
+
     }
 }
