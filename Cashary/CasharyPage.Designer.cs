@@ -30,11 +30,10 @@
         {
             this.dgvCashary = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpPage = new System.Windows.Forms.DateTimePicker();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.cmbFilterBy = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
@@ -42,12 +41,13 @@
             this.btnTambahData = new System.Windows.Forms.Button();
             this.btnCetak = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.btnPrev = new System.Windows.Forms.Button();
+
             this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
+
             this.lblPageInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCashary)).BeginInit();
             this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCashary
@@ -63,7 +63,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dateTimePicker1);
+            this.groupBox3.Controls.Add(this.dtpPage);
             this.groupBox3.Controls.Add(this.txtSearch);
             this.groupBox3.Controls.Add(this.cmbFilterBy);
             this.groupBox3.Controls.Add(this.btnSearch);
@@ -76,13 +76,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Filter";
             // 
-            // dateTimePicker1
+            // dtpPage
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(170, 22);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(178, 22);
-            this.dateTimePicker1.TabIndex = 14;
+
+            this.dtpPage.Location = new System.Drawing.Point(191, 28);
+            this.dtpPage.Name = "dtpPage";
+            this.dtpPage.Size = new System.Drawing.Size(200, 26);
+            this.dtpPage.TabIndex = 14;
+            this.dtpPage.ValueChanged += new System.EventHandler(this.dtpPage_ValueChanged);
+
             // 
             // txtSearch
             // 
@@ -115,36 +117,24 @@
             this.btnSearch.TabIndex = 10;
             this.btnSearch.Text = "Cari";
             this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnClear);
-            this.groupBox2.Controls.Add(this.btnEdit);
-            this.groupBox2.Controls.Add(this.btnReload);
-            this.groupBox2.Controls.Add(this.btnHapus);
-            this.groupBox2.Location = new System.Drawing.Point(529, 410);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(338, 100);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Aksi";
+
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(37, 66);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClear.Location = new System.Drawing.Point(172, 598);
+
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(263, 25);
             this.btnClear.TabIndex = 10;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(37, 28);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEdit.Location = new System.Drawing.Point(854, 570);
+
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(66, 26);
             this.btnEdit.TabIndex = 5;
@@ -154,8 +144,9 @@
             // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(224, 28);
-            this.btnReload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+
+            this.btnReload.Location = new System.Drawing.Point(1058, 570);
+
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(76, 26);
             this.btnReload.TabIndex = 7;
@@ -164,8 +155,9 @@
             // 
             // btnHapus
             // 
-            this.btnHapus.Location = new System.Drawing.Point(130, 28);
-            this.btnHapus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+
+            this.btnHapus.Location = new System.Drawing.Point(959, 579);
+
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(68, 26);
             this.btnHapus.TabIndex = 6;
@@ -206,32 +198,36 @@
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
-            // btnPrev
-            // 
-            this.btnPrev.Location = new System.Drawing.Point(54, 410);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(75, 23);
-            this.btnPrev.TabIndex = 17;
-            this.btnPrev.Text = "Prev";
-            this.btnPrev.UseVisualStyleBackColor = true;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
-            // 
+
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(156, 409);
+            this.btnNext.Location = new System.Drawing.Point(252, 521);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 18;
+            this.btnNext.Size = new System.Drawing.Size(137, 31);
+            this.btnNext.TabIndex = 17;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // btnPrev
+            // 
+            this.btnPrev.Location = new System.Drawing.Point(61, 521);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(137, 31);
+            this.btnPrev.TabIndex = 18;
+
+            this.btnPrev.Text = "Prev";
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
+
             // lblPageInfo
             // 
             this.lblPageInfo.AutoSize = true;
-            this.lblPageInfo.Location = new System.Drawing.Point(418, 413);
+            this.lblPageInfo.Location = new System.Drawing.Point(702, 521);
             this.lblPageInfo.Name = "lblPageInfo";
-            this.lblPageInfo.Size = new System.Drawing.Size(108, 16);
+            this.lblPageInfo.Size = new System.Drawing.Size(129, 20);
+
             this.lblPageInfo.TabIndex = 19;
             this.lblPageInfo.Text = "Halaman 1 dari 2";
             // 
@@ -239,23 +235,28 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 520);
+
+            this.ClientSize = new System.Drawing.Size(1200, 701);
+            this.Controls.Add(this.btnReload);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnHapus);
             this.Controls.Add(this.lblPageInfo);
-            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrev);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnClear);
+
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnCetak);
             this.Controls.Add(this.btnTambahData);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dgvCashary);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CasharyPage";
-            this.Text = "CashiaryPage";
+            this.Text = "Cashary Page";
+            this.Load += new System.EventHandler(this.CasharyPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCashary)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,8 +269,7 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.ComboBox cmbFilterBy;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DateTimePicker dtpPage;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnReload;
@@ -277,8 +277,9 @@
         private System.Windows.Forms.Button btnTambahData;
         private System.Windows.Forms.Button btnCetak;
         private System.Windows.Forms.Button btnLogOut;
-        private System.Windows.Forms.Button btnPrev;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrev;
+
         private System.Windows.Forms.Label lblPageInfo;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterFormCashary));
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -39,39 +40,39 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(163, 138);
+            this.txtUsername.Location = new System.Drawing.Point(643, 226);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(226, 26);
+            this.txtUsername.Size = new System.Drawing.Size(385, 26);
             this.txtUsername.TabIndex = 0;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(163, 235);
+            this.txtPassword.Location = new System.Drawing.Point(643, 313);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(226, 26);
+            this.txtPassword.Size = new System.Drawing.Size(385, 26);
             this.txtPassword.TabIndex = 1;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(163, 184);
+            this.txtEmail.Location = new System.Drawing.Point(643, 271);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(226, 26);
+            this.txtEmail.Size = new System.Drawing.Size(385, 26);
             this.txtEmail.TabIndex = 2;
             // 
             // txtConfirmPassword
             // 
-            this.txtConfirmPassword.Location = new System.Drawing.Point(163, 287);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(643, 360);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
-            this.txtConfirmPassword.Size = new System.Drawing.Size(226, 26);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(385, 26);
             this.txtConfirmPassword.TabIndex = 3;
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(163, 343);
+            this.btnRegister.Location = new System.Drawing.Point(794, 414);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(76, 32);
+            this.btnRegister.Size = new System.Drawing.Size(95, 32);
             this.btnRegister.TabIndex = 4;
             this.btnRegister.Text = "Daftar";
             this.btnRegister.UseVisualStyleBackColor = true;
@@ -80,7 +81,7 @@
             // llblRegister
             // 
             this.llblRegister.AutoSize = true;
-            this.llblRegister.Location = new System.Drawing.Point(502, 394);
+            this.llblRegister.Location = new System.Drawing.Point(881, 463);
             this.llblRegister.Name = "llblRegister";
             this.llblRegister.Size = new System.Drawing.Size(48, 20);
             this.llblRegister.TabIndex = 6;
@@ -91,7 +92,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(323, 394);
+            this.label1.Location = new System.Drawing.Point(709, 463);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(163, 20);
             this.label1.TabIndex = 8;
@@ -101,7 +102,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSize = true;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(1200, 701);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.llblRegister);
             this.Controls.Add(this.btnRegister);
