@@ -159,6 +159,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RegisterFormCashary.resx">
       <DependentUpon>RegisterFormCashary.cs</DependentUpon>
@@ -176,6 +177,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Animasi Hijau Tips Mengatur Keuangan Youtube Intro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgLoginRegis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hoomepage cashary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cashary form %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout%28129 x 40 piksel%29 %2840 x 40 piksel%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

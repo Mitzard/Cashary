@@ -80,5 +80,6 @@ namespace Cashary
             this.Hide();
             rfc.Show();
         }
+
     }
 }

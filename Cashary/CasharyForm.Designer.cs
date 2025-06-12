@@ -118,12 +118,14 @@
             // 
             // btnHapus
             // 
+            this.btnHapus.BackColor = System.Drawing.Color.Crimson;
+            this.btnHapus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnHapus.Location = new System.Drawing.Point(53, 592);
             this.btnHapus.Name = "btnHapus";
             this.btnHapus.Size = new System.Drawing.Size(89, 78);
             this.btnHapus.TabIndex = 8;
             this.btnHapus.Text = "Hapus";
-            this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.UseVisualStyleBackColor = false;
             this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // txtDisplay
@@ -138,11 +140,13 @@
             // 
             // cmbKategori
             // 
+            this.cmbKategori.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.cmbKategori.FormattingEnabled = true;
             this.cmbKategori.Location = new System.Drawing.Point(54, 40);
             this.cmbKategori.Name = "cmbKategori";
             this.cmbKategori.Size = new System.Drawing.Size(341, 28);
             this.cmbKategori.TabIndex = 10;
+            this.cmbKategori.Text = "Pilih Kategori";
             // 
             // btn9
             // 
@@ -176,33 +180,39 @@
             // 
             // dtpForm
             // 
-            this.dtpForm.Location = new System.Drawing.Point(80, 155);
+            this.dtpForm.Location = new System.Drawing.Point(53, 143);
             this.dtpForm.Name = "dtpForm";
-            this.dtpForm.Size = new System.Drawing.Size(288, 26);
+            this.dtpForm.Size = new System.Drawing.Size(341, 26);
             this.dtpForm.TabIndex = 15;
             // 
             // btnSimpan
             // 
+            this.btnSimpan.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnSimpan.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSimpan.Location = new System.Drawing.Point(305, 592);
             this.btnSimpan.Name = "btnSimpan";
             this.btnSimpan.Size = new System.Drawing.Size(89, 78);
             this.btnSimpan.TabIndex = 18;
             this.btnSimpan.Text = "Simpan";
-            this.btnSimpan.UseVisualStyleBackColor = true;
+            this.btnSimpan.UseVisualStyleBackColor = false;
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
             // txtDeskripsi
             // 
-            this.txtDeskripsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeskripsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeskripsi.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtDeskripsi.Location = new System.Drawing.Point(54, 93);
             this.txtDeskripsi.Name = "txtDeskripsi";
-            this.txtDeskripsi.Size = new System.Drawing.Size(341, 39);
+            this.txtDeskripsi.Size = new System.Drawing.Size(341, 26);
             this.txtDeskripsi.TabIndex = 19;
+            this.txtDeskripsi.Text = "Isi Deskripsi";
             // 
             // CasharyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Cashary.Properties.Resources.cashary_form__1_;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(454, 685);
             this.Controls.Add(this.txtDeskripsi);
             this.Controls.Add(this.btnSimpan);
@@ -220,6 +230,7 @@
             this.Controls.Add(this.btn5);
             this.Controls.Add(this.btn6);
             this.Controls.Add(this.btn1);
+            this.DoubleBuffered = true;
             this.Name = "CasharyForm";
             this.Text = "CasharyForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
