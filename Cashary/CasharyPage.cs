@@ -22,7 +22,9 @@ namespace Cashary
         int totalRecords = 0;
 
 
+
         bool isFiltered = false;
+
         public CasharyPage()
         {
             InitializeComponent();
@@ -140,6 +142,10 @@ namespace Cashary
                 try
                 {
                     conn.Open();
+
+
+                    // Hitung total records
+
                     string countQuery = "SELECT COUNT(*) FROM transaksi WHERE user_id = @userId";
                     MySqlCommand countCmd = new MySqlCommand(countQuery, conn);
                     countCmd.Parameters.AddWithValue("@userId", currentUserId);
@@ -150,6 +156,7 @@ namespace Cashary
                     if (currentPage < 1) currentPage = 1;
 
                     int offset = (currentPage - 1) * pageSize;
+
                     string query = @"SELECT
                                 t.id, 
                                 t.waktu,
@@ -161,6 +168,7 @@ namespace Cashary
                             WHERE t.user_id = @userId 
                             ORDER BY t.waktu DESC
                             LIMIT @limit OFFSET @offset";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@userId", currentUserId);
                     cmd.Parameters.AddWithValue("@limit", pageSize);
@@ -173,23 +181,19 @@ namespace Cashary
 
                     if (dgvCashary.Rows.Count > 0)
                     {
-                        // Sembunyikan kolom ID dari pengguna
                         dgvCashary.Columns["id"].Visible = false;
-
-                        // Atur Header Teks
                         dgvCashary.Columns["waktu"].HeaderText = "Waktu";
                         dgvCashary.Columns["nama_kategori"].HeaderText = "Kategori";
                         dgvCashary.Columns["jumlah"].HeaderText = "Jumlah";
                         dgvCashary.Columns["deskripsi"].HeaderText = "Deskripsi";
 
-                        // Atur formatting kolom Jumlah sebagai mata uang
                         dgvCashary.Columns["jumlah"].DefaultCellStyle.Format = "C";
-                        dgvCashary.Columns["jumlah"].DefaultCellStyle.FormatProvider = new CultureInfo("id-ID"); // Format Rupiah
-                        dgvCashary.Columns["jumlah"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Rata kanan
+                        dgvCashary.Columns["jumlah"].DefaultCellStyle.FormatProvider = new CultureInfo("id-ID");
+                        dgvCashary.Columns["jumlah"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                        // Atur lebar kolom agar proporsional
                         dgvCashary.Columns["deskripsi"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     }
+
                     lblPageInfo.Text = $"Halaman {currentPage} dari {totalPages}";
                 }
                 catch (Exception ex)
@@ -198,6 +202,7 @@ namespace Cashary
                 }
             }
         }
+
 
         private void btnCetak_Click(object sender, EventArgs e)
         {
@@ -241,13 +246,13 @@ namespace Cashary
                 return;
             }
             DialogResult konfirmasi = MessageBox.Show("Apakah Anda yakin ingin menghapus transaksi ini? Data yang sudah dihapus tidak bisa dikembalikan.", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
+
             if (konfirmasi == DialogResult.Yes)
             {
                 try
                 {
                     int transaksiId = Convert.ToInt32(dgvCashary.CurrentRow.Cells["id"].Value);
-               
+
                     int currentUserId = UserSession.LoggedInUserId;
 
                     using (MySqlConnection conn = new MySqlConnection(DBConfig.ConnStr))
@@ -282,6 +287,17 @@ namespace Cashary
                 {
                     LoadData();
                 }
+
+            }
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadData();
             }
         }
 
@@ -327,5 +343,6 @@ namespace Cashary
 
             LoadData();
         }
+
     }
 }
